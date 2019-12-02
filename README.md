@@ -5,7 +5,9 @@ This repository simply contains a [dockerfile](https://docs.docker.com/engine/re
 Please note that this repo is more of a documentation of the process and is to some degree specific to the system I use it for.
 You hence may need to adjust some parts of the scripts to work with your setup/HPC environment.
 
-The main idea behind this strategy is to fake authenticate users for rstudio using a randomly generated password (compare [this charliecloud issue](https://github.com/hpc/charliecloud/issues/569))
+The main idea behind this strategy is to fake authenticate users for rstudio using a randomly generated password (compare [this charliecloud issue](https://github.com/hpc/charliecloud/issues/569)).
+
+NOTE: Scripts were in part adapted from https://github.com/OSC/bc_osc_rstudio_server
 
 Apart from the main dockerfile, this approach uses two more scripts:
 
