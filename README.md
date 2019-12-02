@@ -37,6 +37,6 @@ Note that the port you choose (`8181` in the example above) needs to be accessib
 
 # Additional scripts
 
-I put one additional script in this respository: [scripts/export_images.sh](scripts/export_images.sh)
+I put one additional script in this respository: [scripts/export_images.sh](scripts/export_image.sh)
 
 This script can be used (if you run it on a machine running docker) to build, create and export a dockerfile to ultimately create a charliecloud tar-ball image.
