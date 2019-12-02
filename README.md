@@ -22,7 +22,7 @@ In essence, the script checks whether the supplied user-name corresponds to the 
 
 This script prepares the necessary environment (generates password and sets environment variable, sets path to authentication script, prepares secure-cookie file) and runs the Rstudio server. It further provides some additional output to the user, such as the generated random password as well as the address to the server (in case of a SLURM based HPC system).
 
-NOTE: The `SLURMD_NODENAME` variable is used since the `$HOSTNAME` was not available on the system I was testing on. It might suffice for you to simple substitute these to variables to fix the shown address.
+NOTE: The `$SLURMD_NODENAME` variable is used since the `$HOSTNAME` was not available on the system I was testing on. It might suffice for you to simple substitute these to variables to fix the shown address.
 
 ---------
 
