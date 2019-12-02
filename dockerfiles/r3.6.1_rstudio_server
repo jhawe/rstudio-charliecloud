@@ -1,0 +1,26 @@
+# default R-version install via rocker, uses debian as a base
+FROM rocker/verse:3.6.1
+
+# ------------------------------------------------------------------------------
+# prepare the Rstudio authentication script
+# ------------------------------------------------------------------------------
+# path used in the start_rstudio script
+COPY ./scripts/rstudio_auth.sh /bin/
+RUN chmod +x /bin/rstudio_auth.sh && \
+  ln -s -r /bin/rstudio_auth.sh /bin/rstudio_auth
+
+# ------------------------------------------------------------------------------
+# prepare the rstudio start script
+# ------------------------------------------------------------------------------
+COPY ./scripts/start_rstudio.sh /bin/
+RUN chmod +x /bin/start_rstudio.sh && \
+  ln -s -r /bin/start_rstudio.sh /bin/start_rstudio
+
+# ------------------------------------------------------------------------------
+# finally, copy the actual dockerfile to the container for documentation
+# ------------------------------------------------------------------------------
+COPY ./dockerfiles/r3.6.1_rstudio_server /DOCKERFILE
+
+# all done.
+# server can now be started by calling '/bin/start_rstudio <port>' in the image
+
