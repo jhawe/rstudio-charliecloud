@@ -22,7 +22,7 @@ In essence, the script checks whether the supplied user-name corresponds to the 
 
 This script prepares the necessary environment (generates password and sets environment variable, sets path to authentication script, prepares secure-cookie file) and runs the Rstudio server. It further provides some additional output to the user, such as the generated random password as well as the address to the server (in case of a SLURM based HPC system).
 
-NOTE: The `$SLURMD_NODENAME` variable is used since the `$HOSTNAME` was not available on the system I was testing on. It might suffice for you to simple substitute these to variables to fix the shown address.
+NOTE: The `$SLURMD_NODENAME` variable is used since the `$HOSTNAME` was not available on the system I was testing on. It might suffice for you to simple substitute these two variables to fix the address displayed to the user.
 
 ---------
 
@@ -39,6 +39,35 @@ Note that the port you choose (`8181` in the example above) needs to be accessib
 
 # Additional scripts
 
-I put one additional script in this respository: [scripts/export_images.sh](scripts/export_image.sh)
+I put a script for convenient creation of charliecloud images from docker in this respository: [scripts/export_images.sh](scripts/export_image.sh)
 
 This script can be used (if you run it on a machine running docker) to build, create and export a dockerfile to ultimately create a charliecloud tar-ball image.
+
+-------
+To check whether everything is working well, start the Rstudio server and try to execute the following simple R script:
+
+```{r}
+# load toy data
+data(cars)
+print(summary(cars))
+
+# create linear model
+lm <- lm(dist~speed, cars)
+# plot linear model results
+plot(lm, 1)
+```
+
+If you use e.g. the rocker/verse image as in this repo, the following lines should also work:
+
+```{r}
+# load tidyverse packages
+library(tidyverse)
+
+# load toy data
+data(cars)
+
+# plot using ggplot
+ggplot(cars, aes(x=dist, y=speed)) + 
+  geom_point() + 
+  geom_smooth()
+```
